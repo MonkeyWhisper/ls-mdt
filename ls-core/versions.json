@@ -1,0 +1,26 @@
+[
+	{
+		"version": "1.0.2",
+		"version_name": "Update",
+		"version_desc": "GetIdentifier added, few functions added too.",
+		"name": "ls-core"
+    },
+	{
+		"version": "1.0.3",
+		"version_name": "Update",
+		"version_desc": "fivem-appearance has been implemented to inventory, most bugs fixed.",
+		"name": "ls-inventoryhud"
+    },
+	{
+		"version": "1.0.0",
+		"version_name": "Release",
+		"version_desc": "First release of WeaponShop script.",
+		"name": "ls-weaponshop"
+    },
+    {
+        "version": "1.0.2",
+        "version_name": "license Rework",
+        "version_desc": "License system has been reworked, bugs fixed.",
+        "name": "ls-mdt"
+    }
+]

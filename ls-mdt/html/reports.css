@@ -1,0 +1,336 @@
+.incident-record {
+    position: relative;
+    width: 100%;
+    height: 5.5vh;
+
+    margin-top: .3vh;
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    float: left;
+
+    cursor: pointer;
+}
+
+.incident-record::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 100%;
+
+    background: var(--color-main);
+    opacity: .5;
+    z-index: -1;
+}
+
+.incident-record-name {
+    position: absolute;
+
+    top: 1%;
+    left: 2.5%;
+
+    color: #ffffff;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: var(--font-19px);
+}
+
+.incident-record-tof {
+    position: absolute;
+
+    top: 58%;
+    left: 2.5%;
+
+    color: #ffffff;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: var(--font-15px);
+}
+
+.incident-record-tof > b {
+    font-weight: 100;
+}
+
+.image-little-gallery {
+    position: relative;
+    width: 5vh;
+    height: 7vh;
+    float: left;
+
+    margin-left: .5vh;
+    margin-top: .5vh;
+    z-index: 100;
+}
+.image-little-gallery > img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.incident-info-box {
+    position: absolute;
+
+    left: 1.2%;
+    top: 7.2%;
+
+    height: 9.6vh;
+    width: 26.6vw;
+}
+
+.incident-text-box {
+    position: absolute;
+
+    left: 1.2%;
+    top: 21.2%;
+
+    height: 35.6vh;
+    width: 26.6vw;
+}
+
+.incident-item-label {
+    position: relative;
+    width: 48%;
+    height: 4vh;
+
+    margin-top: .5vh;
+    margin-left: .7vh;
+
+    color: #e2e2e2;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;
+    font-size: var(--font-15px);
+
+    float: left;
+}
+
+.incident-item-label > b {
+    color: #eae7e7;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;
+    font-size: var(--font-13px);
+
+    outline: none;
+    border: none;
+}
+
+.weapons-box {
+    position: absolute;
+
+    left: 1.2%;
+    top: 71%;
+
+    height: 10vh;
+    width: 26.5vw;
+}
+
+.hostages-box {
+    position: absolute;
+
+    left: 1.2%;
+    top: 85%;
+
+    height: 10vh;
+    width: 26.5vw;
+}
+
+.officers-box {
+    position: absolute;
+
+    left: 51.8%;
+    top: 7.2%;
+
+    height: 10vh;
+    width: 26.5vw;
+}
+
+.criminals-box {
+    position: absolute;
+
+    left: 51.8%;
+    top: 21.2%;
+
+    height: 10vh;
+    width: 26.5vw;
+}
+
+.witness-box {
+    position: absolute;
+
+    left: 51.8%;
+    top: 67.2%;
+
+    height: 10vh;
+    width: 26.5vw;
+}
+
+.crimes-box {
+    position: absolute;
+
+    left: 51.8%;
+    top: 35.2%;
+
+    height: 22vh;
+    width: 26.5vw;
+}
+
+.crimes-inciden-list {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 65%;
+
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.crimes-inciden-list {
+    position: relative;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 65%;
+
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.box-inc {
+    position: relative;
+
+    color: #ffffff;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: var(--font-17px);
+
+    width: 35%;
+    height: 30%;
+    top: 5%;
+
+    float: left;
+    margin-right: .8vw;
+}
+
+.box-incident-bottom {
+    position: absolute;
+
+    color: #ffffff;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: var(--font-13px);
+
+    width: 90%;
+    height: 40%;
+    
+    top: 60%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+
+    float: left;
+    margin-right: .8vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-incident-bottom::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 100%;
+
+    background: var(--color-sec);
+    opacity: .03;
+}
+
+.gallery-box2 {
+    position: absolute;
+
+    left: 51.8%;
+    top: 81%;
+
+    height: 8vh;
+
+    width: 26.5vw;
+}
+
+.veh-item {
+    position: relative;
+
+    margin-top: .5vh;
+    margin-left: .7vh;
+    padding: .1vh;
+    padding-left: 1vh; 
+    padding-right: 1vh; 
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 2vh;
+
+    left: 0;
+
+    float: left;
+
+    color: #ffffff;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: var(--font-12px);
+    background: #191919;
+
+    border-radius: 2.5px;
+
+    outline: none;
+    border: none;
+}
+
+.text-area {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 98.9%;
+    box-sizing: border-box;
+    border: .05 solid transparent;
+
+    background-color: transparent;
+
+    font-size: 16px;
+    resize: none;
+
+    color: #ffffff;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: var(--font-17px);
+    background: #191919;
+
+    border-radius: 2.5px;
+
+    z-index: unset;
+
+    border: none;
+    outline: none;
+    white-space: pre-wrap;
+}

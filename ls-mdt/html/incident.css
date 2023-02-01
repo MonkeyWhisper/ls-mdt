@@ -1,0 +1,91 @@
+.report-text-box {
+    position: absolute;
+
+    left: 1.2%;
+    top: 21.2%;
+
+    height: 55.8vh;
+    width: 26.6vw;
+}
+
+.emergency-box {
+    position: absolute;
+
+    left: 51.8%;
+    top: 21.2%;
+
+    height: 10vh;
+    width: 26.5vw;
+}
+
+.tags-rep-box {
+    position: absolute;
+
+    left: 51.8%;
+    top: 35.2%;
+
+    height: 10vh;
+    width: 26.5vw;
+}
+
+.status-rep-box {
+    position: absolute;
+
+    left: 51.8%;
+    top: 49.2%;
+
+    height: 10vh;
+    width: 26.5vw;
+}
+
+.gallery-box3 {
+    position: absolute;
+
+    left: 51.8%;
+    top:63%;
+
+    height: 20vh;
+
+    width: 26.5vw;
+}
+
+.status-box {
+    position: relative;
+
+    margin-top: .5vh;
+    margin-left: .7vh;
+    padding: .1vh;
+    padding-left: 1vh; 
+    padding-right: 1vh; 
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 2vh;
+
+    left: 0;
+
+    float: left;
+
+    color: #ffffff;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: var(--font-12px);
+    background: #191919;
+
+    text-transform: uppercase;
+
+    border-radius: 2.5px;
+
+    cursor: pointer;
+}
+
+.resolved-rep {
+    background: #3a893a;
+}
+
+.unresolved-rep {
+    background: #4c0f0f;
+}

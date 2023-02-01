@@ -1,0 +1,40 @@
+.report-text-box {
+    position: absolute;
+
+    left: 1.2%;
+    top: 21.2%;
+
+    height: 55.8vh;
+    width: 26.6vw;
+}
+
+.bolo-tags-box {
+    position: absolute;
+
+    left: 51.8%;
+    top: 21.2%;
+
+    height: 10vh;
+    width: 26.5vw;
+}
+
+.status-bolo-box {
+    position: absolute;
+
+    left: 51.8%;
+    top: 35.2%;
+
+    height: 10vh;
+    width: 26.5vw;
+}
+
+.gallery-box4 {
+    position: absolute;
+
+    left: 51.8%;
+    top:49%;
+
+    height: 30vh;
+
+    width: 26.5vw;
+}

@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Design CSS-->
+    <link href="main.css" rel="stylesheet">
+    <link href="profile.css" rel="stylesheet">
+    <link href="incident.css" rel="stylesheet">
+    <link href="reports.css" rel="stylesheet">
+    <link href="bolo.css" rel="stylesheet">
+    <link href="dmv.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    <!-- Fontawesome CSS-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&display=swap" rel="stylesheet">
+    <!-- jQuery UI -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js" integrity="sha256-xH4q8N0pEzrZMaRmd7gQVcTZiFei+HfRTBPJ1OGXC0k=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <title>ls-mdt</title>
+</head>
+    <!-- Base Stuff-->
+    <body>
+        <!-- <img src="debug_image/7_DMV.png" class="img-back"> -->
+
+        <div class="mdt-frame">
+            <div class="mdt-top">
+                <img src="images/lspd.png" class="mdt-logo">
+                <div class="mdt-department">LOS SANTOS<br>POLICE DEPARMENT<br><span class="mdt-department-officer">David Cold</span></div>
+
+                <div class="mdt-close">x</div>
+
+                <div class="edit-buttons">
+                    <div class="edit-button button-refresh"><i class="fas fa-sync"></i></div>
+                    <div class="edit-button button-add" style="display: block;"><i class="fas fa-plus"></i></div>
+                    <div class="edit-button button-edit"><i class="fas fa-pen"></i></div>
+                    <div class="edit-button button-save"><i class="fas fa-save"></i></div>
+                </div>
+            </div>
+
+            <div class="mdt-footer">
+                <div class="mdt-clock">
+                    <span class="time-clock"><b>27.12.2022</b><br>15:19</span>
+                    <i class="fas fa-clock"></i>
+                </div>
+            </div>
+
+            <div class="mdt-nav">
+                <div class="nav-item nav-dashboard nav-selected"><i class="fas fa-home"></i></div>
+                <div class="nav-item nav-profile"><i class="fas fa-users"></i></div>
+                <div class="nav-item nav-incident"><i class="fas fa-car-crash"></i></div>
+                <div class="nav-item nav-reports"><i class="fas fa-headset"></i></div>
+                <div class="nav-item nav-bolo"><i class="fas fa-file-invoice"></i></div>
+                <div class="nav-item nav-map"><i class="fas fa-map-marked-alt"></i></div>
+                <div class="nav-item nav-car"><i class="fas fa-car"></i></div>
+                <div class="nav-item nav-department"><i class="fas fa-broadcast-tower"></i></div>
+            </div>
+
+            <div class="mdt-page">
+                <div class="page-dashboard">
+                    <div class="page-box">
+                        <div class="page-box-label">Wanted Persons</div>
+
+                        <div class="wanted-person-list list-dashb"></div>
+                    </div>
+                    <div class="page-box">
+                        <div class="page-box-label">Announcements <div class="add-icon new-bulletin"><i class="fas fa-plus"></i></div></div>
+
+                        <div class="bulletin-list list-dashb"></div>
+                    </div>
+                    <div class="page-box">
+                        <div class="page-box-label">Online Officers</div>
+                        <div class="active-unit-list list-dashb"></div>
+                    </div>
+
+                    <div class="page-box">
+                        <div class="page-box-label">Wanted Vehicles</div>
+
+                        <div class="wanted-vehicle-list list-dashb"></div>
+                    </div>
+                    <div class="page-box">
+                        <div class="page-box-label">Dispatch Map</div>
+
+                        <div class="map-item2" id="map-item2"></div>
+                    </div>
+                    <div class="page-box">
+                        <div class="page-box-label">Dispatches</div>
+
+                        <div class="dispatch-list-calls list-dashb"></div>
+                    </div>
+                </div>
+                <div class="page-profile">
+                    <div class="page-box" style="height: 90%;">
+                        <div class="page-box-label" style="top: 1.5%;">Profiles</div>
+
+                        <div class="search-tab">
+                                <input type="text" placeholder="Search Person..." class="search-tab-input person-search" id="person-search" oninput="changeValue(this.value)">
+                                <span id="input-icon"><i class="fas fa-search"></i></span>
+                        </div>
+
+                        <div class="profile-list list-dashb" style="height: 85%;"></div>
+                    </div>
+                    <div class="page-box" style="height: 90%; width: 64.4%;">
+                        <div class="page-box-label" style="top: 1.5%;">Manage Profile</div>
+
+                        <div class="image-big image-person"><img src="debug_image/Katman 7.png"></div>
+
+                        <div class="profile-info-box">
+                            <div class="page-box-label" style="top: 1.5%; width: 100%;">Information</div>
+
+                            <div class="page-box2" style="overflow: hidden; width: 100%; height:84%; margin-right: 0; margin-bottom: 0; top: 14%;">
+                                <div class="info-item-label citizen-id"><i class="fas fa-address-card"></i> Citizen ID<br><b>       QA8125DD21</b><div class="line-info"></div></div>
+                                <div class="info-item-label forename"><i class="fas fa-user"></i> Forename<br><b>       Abraham</b><div class="line-info"></div></div>
+                                <div class="info-item-label surname"><i class="fas fa-user"></i> Surname<br><b>       Lincoln</b><div class="line-info"></div></div>
+                                <div class="info-item-label dob"><i class="fas fa-calendar-alt"></i> Date of Birth<br><b>       05 / 08 / 1998</b><div class="line-info"></div></div>
+                                <div class="info-item-label job" style="width: 100%;"><i class="fas fa-briefcase"></i> Profession<br><b>       Police | Sergant II</b><div class="line-info"></div></div>
+                                <div class="info-item-label profile-picture"><i class="fas fa-camera"></i> Profile Image<br><b>       https://discord.gg/0resmon</b><div class="line-info"></div></div>
+                            </div>
+                        </div>
+
+                        <div class="profile-record-box">
+                            <div class="page-box-label" style="top: 1.5%; width: 100%;">Known Records</div>
+
+                            <div class="page-box4 record-list" style="width: 100%; height:84%; margin-right: 0; margin-bottom: 0; top: 14%;"></div>
+                        </div>
+
+                        <div class="license-box">
+                            <div class="page-box-label" style="top: 1.5%; width: 100%;">Licenses</div>
+
+                            <div class="page-box3 licenses-list" style="margin-top: 8%; width: 100%; height:84%; margin-right: 0; margin-bottom: 0; top: 14%;">
+                                <div class="license-item y-lic">Weapon</div>
+                                <div class="license-item n-lic">Driver</div>
+                            </div>
+                        </div>
+
+                        <div class="veh-box">
+                            <div class="page-box-label" style="top: 1.5%; width: 100%;">Vehicles</div>
+
+                            <div class="page-box3 veh-list" style="margin-top: 8%; width: 100%; height:84%; margin-right: 0; margin-bottom: 0; top: 14%;"></div>
+                        </div>
+
+                        <div class="property-box">
+                            <div class="page-box-label" style="top: 1.5%; width: 100%;">Properties</div>
+
+                            <div class="page-box3 properties-list" style="margin-top: 4%; width: 100%; height:84%; margin-right: 0; margin-bottom: 0; top: 0%;"></div>
+                        </div>
+
+                        <div class="tags-box">
+                            <div class="page-box-label" style="top: 1.5%; width: 100%;">TAGS <div class="add-icon new-user-tag"><i class="fas fa-plus"></i></div></div>
+
+                            <div class="page-box3 tags-list-user" style="margin-top: 4%; width: 100%; height:44%; margin-right: 0; margin-bottom: 0; top: 0%;"></div>
+                        </div>
+
+                        <div class="gallery-box">
+                            <div class="page-box-label" style="top: 1.5%; width: 100%;">GALLERY<div class="add-icon new-user-photo"><i class="fas fa-plus"></i></div></div>
+
+                            <div class="page-box3 image-gallery-user" style="margin-top: 8%; width: 100%; height:100%; margin-right: 0; margin-bottom: 0; top: 0%;"></div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="page-incident">
+                    <div class="page-box" style="height: 90%;">
+                        <div class="page-box-label" style="top: 1.5%;">Incidents</div>
+
+                        <div class="search-tab">
+                                <input type="text" placeholder="Search Incident..." class="search-tab-input incident-search" id="incident-search" oninput="changeValue(this.value)">
+                                <span id="input-icon"><i class="fas fa-search"></i></span>
+                        </div>
+
+                        <div class="incident-list list-dashb" style="height: 85%;"></div>
+                    </div>
+                    <div class="page-box" style="height: 90%; width: 64.4%;">
+                        <div class="page-box-label" style="top: 1.5%;">Manage Incident</div>
+
+                        <div class="incident-info-box">
+                            <div class="page-box2" style="width: 100%; height:100%; margin-right: 0; margin-bottom: 0; top: 0%;">
+                                <div class="incident-item-label incident-title"><i class="fas fa-pen"></i> Incident Title<br><b>       Store Robbing</b><div class="line-info"></div></div>
+                                <div class="incident-item-label incident-time"><i class="fas fa-clock"></i> Incident Time<br><b>       27.12.2022 15:09 / 30 min ago</b><div class="line-info"></div></div>
+                                <div class="incident-item-label incident-location" style="width: 80%;"><i class="fas fa-map-marker-alt"></i> Incident Location<br><b>       Hollywood Street, Santa Monica 55-89</b><div class="line-info"></div></div>
+                            </div>
+                        </div>
+
+                        <div class="incident-text-box">
+                            <div class="page-box-label" style="top: 1.5%; width: 100%;">Crime Summary</div>
+
+                            <div class="page-box" style="width: 100%; height:84%; margin-right: 0; margin-bottom: 0; top: 14%;">
+                                <textarea class="text-area text-crime">&#10;&#10;Title: Store Robbing&#10;Location: Hollywood Street, Santa Monica 55-89&#10;Criminal Weapons: Combat Pistol&#10;Hostage: Braiden Miles &#10;Criminal Involved: Abraham Lincoln &#10;Crimes Commited: Store Robbing &#10;&#10;Penalty Amount: 1 Week&#10;Detention Period: 3 Day &#10;Witness: None&#10;Evidence: Added as Photo&#10;&#10;Officers Involved: David Cold</textarea>
+                            </div>
+                        </div>
+
+                        <div class="weapons-box">
+                            <div class="page-box-label" style="top: 1.5%; width: 100%;">Criminal Weapons <div class="add-icon new-weapon-incident"><i class="fas fa-plus"></i></div></div>
+
+                            <div class="page-box3 weapons-incident-list" style="margin-top: 6%; width: 100%; height:54%; margin-right: 0; margin-bottom: 0; top: 14%;"></div>
+                        </div>
+
+                        <div class="hostages-box">
+                            <div class="page-box-label" style="top: 1.5%; width: 100%;">Hostages <div class="add-icon new-hostage-incident"><i class="fas fa-plus"></i></div></div>
+
+                            <div class="page-box3 incident-hostage" style="margin-top: 6%; width: 100%; height:54%; margin-right: 0; margin-bottom: 0; top: 14%;"></div>
+                        </div>
+
+                        <div class="officers-box">
+                            <div class="page-box-label" style="top: 1.5%; width: 100%;">Officers Involved <div class="add-icon new-officer-incident"><i class="fas fa-plus"></i></div></div>
+
+                            <div class="page-box3 officer-incident" style="margin-top: 6%; width: 100%; height:54%; margin-right: 0; margin-bottom: 0; top: 14%;"></div>
+                        </div>
+
+                        <div class="criminals-box">
+                            <div class="page-box-label" style="top: 1.5%; width: 100%;">Criminals Involved <div class="add-icon new-criminal-incident"><i class="fas fa-plus"></i></div></div>
+
+                            <div class="page-box3 crime-incident" style="margin-top: 6%; width: 100%; height:54%; margin-right: 0; margin-bottom: 0; top: 14%;"></div>
+                        </div>
+
+                        <div class="crimes-box">
+                            <div class="page-box-label" style="top: 1.5%; width: 100%;">Crimes Commited <div class="add-icon new-crime-incident"><i class="fas fa-plus"></i></div></div>
+
+                            <div class="page-box3" style="margin-top: 2%; width: 100%; height:84%; margin-right: 0; margin-bottom: 0; top: 14%;">
+                                <div class="crimes-inciden-list">
+                                    <div class="veh-item">Store Robbery</div>
+                                </div>
+
+                                <div class="box-inc"><i class="fas fa-money-bill"></i> Fine Amount <div class="box-incident-bottom fine-amount">18.824 $</div></div>
+
+                                <div class="box-inc"><i class="fas fa-calendar-minus"></i> Sentence Days <div class="box-incident-bottom sentence-days">175</div></div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="witness-box">
+                            <div class="page-box-label" style="top: 1.5%; width: 100%;">Witness <div class="add-icon new-witness-incident"><i class="fas fa-plus"></i></div></div>
+
+                            <div class="page-box3 witness-list" style="margin-top: 6%; width: 100%; height:54%; margin-right: 0; margin-bottom: 0; top: 14%;">
+
+                            </div>
+                        </div>
+
+
+                        <div class="gallery-box2">
+                            <div class="page-box-label" style="top: 1.5%; width: 100%;">GALLERY<div class="add-icon new-incident-photo"><i class="fas fa-plus"></i></div></div>
+
+                            <div class="page-box3 gallery-incident" style="margin-top: 10%; width: 100%; height:100%; margin-right: 0; margin-bottom: 0; top: 0%;"></div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="page-reports">
+                    <div class="page-box" style="height: 90%;">
+                        <div class="page-box-label" style="top: 1.5%;">Reports</div>
+
+                        <div class="search-tab">
+                                <input type="text" placeholder="Search Reports..." class="search-tab-input report-search" id="report-search" oninput="changeValue(this.value)">
+                                <span id="input-icon"><i class="fas fa-search"></i></span>
+                        </div>
+
+                        <div class="report-list list-dashb" style="height: 85%;">
+                            <div class="incident-record">
+                                <div class="incident-record-name">Store Robbing</div>
+                                <div class="incident-record-tof">David Cold - <b>Just Now</b></div>
+                                <div class="wanted-person-case">#2569</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-box" style="height: 90%; width: 64.4%;">
+                        <div class="page-box-label" style="top: 1.5%;">Manage Report</div>
+
+                        <div class="incident-info-box">
+                            <div class="page-box2" style="width: 100%; height:100%; margin-right: 0; margin-bottom: 0; top: 0%;">
+                                <div class="incident-item-label report-title"><i class="fas fa-pen"></i> Report Title<br><b>       Store Robbing</b><div class="line-info"></div></div>
+                                <div class="incident-item-label report-time"><i class="fas fa-clock"></i> Report Time<br><b>       27.12.2022 15:09 / 30 min ago</b><div class="line-info"></div></div>
+                                <div class="incident-item-label report-location" style="width: 80%;"><i class="fas fa-map-marker-alt"></i> Report Location<br><b>       Hollywood Street, Santa Monica 55-89</b><div class="line-info"></div></div>
+                            </div>
+                        </div>
+
+                        <div class="report-text-box">
+                            <div class="page-box-label" style="top: 1.5%; width: 100%;">Report Summary</div>
+
+                            <div class="page-box" style="width: 100%; height:90%; margin-right: 0; margin-bottom: 0; top: 8%;">
+                                <textarea class="text-area text-report">&#10;&#10;Title: Store Robbing&#10;Location: Hollywood Street, Santa Monica 55-89&#10;Criminal Weapons: Combat Pistol&#10;Hostage: Braiden Miles &#10;Criminal Involved: Abraham Lincoln &#10;Crimes Commited: Store Robbing &#10;&#10;Penalty Amount: 1 Week&#10;Detention Period: 3 Day &#10;Witness: None&#10;Evidence: Added as Photo&#10;&#10;Officers Involved: David Cold</textarea>
+                            </div>
+                        </div>
+
+                        <div class="officers-box">
+                            <div class="page-box-label" style="top: 1.5%; width: 100%;">Officers Involved <div class="add-icon new-officer-report"><i class="fas fa-plus"></i></div></div>
+
+                            <div class="page-box3 officer-report" style="margin-top: 6%; width: 100%; height:54%; margin-right: 0; margin-bottom: 0; top: 14%;">
+                                <div class="veh-item">David Cold</div>
+                            </div>
+                        </div>
+
+                        <div class="emergency-box">
+                            <div class="page-box-label" style="top: 1.5%; width: 100%;">Emergencys Involved <div class="add-icon new-emergency-report"><i class="fas fa-plus"></i></div></div>
+
+                            <div class="page-box3 emergency-report" style="margin-top: 6%; width: 100%; height:54%; margin-right: 0; margin-bottom: 0; top: 14%;">
+                                <div class="veh-item">Abraham Lincoln</div>
+                            </div>
+                        </div>
+
+                        <div class="tags-rep-box">
+                            <div class="page-box-label" style="top: 1.5%; width: 100%;">Tags <div class="add-icon new-tag-report"><i class="fas fa-plus"></i></div></div>
+
+                            <div class="page-box3 tags-report" style="margin-top: 6%; width: 100%; height:54%; margin-right: 0; margin-bottom: 0; top: 14%;">
+                                <div class="veh-item">Shop Robery</div>
+                            </div>
+                        </div>
+
+                        <div class="status-rep-box">
+                            <div class="page-box-label" style="top: 1.5%; width: 100%;">Status</div>
+
+                            <div class="page-box3 status-report" style="margin-top: 6%; width: 100%; height:54%; margin-right: 0; margin-bottom: 0; top: 14%; display: flex; justify-content: center; align-items: center;">
+                                <div class="status-box">On Going</div>
+                                <div class="status-box resolved-rep">Resolved</div>
+                            </div>
+                        </div>
+
+
+                        <div class="gallery-box3">
+                            <div class="page-box-label" style="top: 1.5%; width: 100%;">GALLERY<div class="add-icon new-report-photo"><i class="fas fa-plus"></i></div></div>
+
+                            <div class="page-box3 gallery-report" style="margin-top: 10%; width: 100%; height:100%; margin-right: 0; margin-bottom: 0; top: 0%;">
+                                <div class="image-little-gallery"><img src="debug_image/Katman 7.png"></div>
+                                <div class="image-little-gallery"><img src="debug_image/Katman 7.png"></div>
+                                <div class="image-little-gallery"><img src="debug_image/Katman 7.png"></div>
+                                <div class="image-little-gallery"><img src="debug_image/Katman 7.png"></div>
+                                <div class="image-little-gallery"><img src="debug_image/Katman 7.png"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="page-bolo">
+                    <div class="page-box" style="height: 90%;">
+                        <div class="page-box-label" style="top: 1.5%;">BOLO</div>
+
+                        <div class="search-tab">
+                                <input type="text" placeholder="Search BOLO..." class="search-tab-input bolo-search" id="bolo-search" oninput="changeValue(this.value)">
+                                <span id="input-icon"><i class="fas fa-search"></i></span>
+                        </div>
+
+                        <div class="bolo-list list-dashb" style="height: 85%;">
+                            <div class="incident-record">
+                                <div class="incident-record-name">Car Thief</div>
+                                <div class="incident-record-tof">David Cold - <b>Just Now</b></div>
+                                <div class="wanted-person-case">#2569</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-box" style="height: 90%; width: 64.4%;">
+                        <div class="page-box-label" style="top: 1.5%;">Manage BOLO</div>
+
+                        <div class="incident-info-box">
+                            <div class="page-box2" style="width: 100%; height:100%; margin-right: 0; margin-bottom: 0; top: 0%;">
+                                <div class="incident-item-label bolo-title"><i class="fas fa-pen"></i> BOLO Title<br><b>       Car Thief</b><div class="line-info"></div></div>
+                                <div class="incident-item-label bolo-time"><i class="fas fa-clock"></i> BOLO Time<br><b>       27.12.2022 15:09 / 30 min ago</b><div class="line-info"></div></div>
+                                <div class="incident-item-label bolo-location" style="width: 61%;"><i class="fas fa-map-marker-alt"></i> BOLO Location<br><b>       Hollywood Street, Santa Monica 55-89</b><div class="line-info"></div></div>
+                                <div class="incident-item-label bolo-plate" style="width: 33%;"><i class="fas fa-address-card"></i> BOLO Plate<br><b>       5MDS003</b><div class="line-info"></div></div>
+                            </div>
+                        </div>
+
+                        <div class="report-text-box">
+                            <div class="page-box-label" style="top: 1.5%; width: 100%;">BOLO Summary</div>
+
+                            <div class="page-box" style="width: 100%; height:90%; margin-right: 0; margin-bottom: 0; top: 8%;">
+                                <textarea class="text-area text-bolo">&#10;&#10;Title: Store Robbing&#10;Location: Hollywood Street, Santa Monica 55-89&#10;Criminal Weapons: Combat Pistol&#10;Hostage: Braiden Miles &#10;Criminal Involved: Abraham Lincoln &#10;Crimes Commited: Store Robbing &#10;&#10;Penalty Amount: 1 Week&#10;Detention Period: 3 Day &#10;Witness: None&#10;Evidence: Added as Photo&#10;&#10;Officers Involved: David Cold</textarea>
+                            </div>
+                        </div>
+
+                        <div class="officers-box">
+                            <div class="page-box-label" style="top: 1.5%; width: 100%;">Officers Involved <div class="add-icon new-officer-bolo"><i class="fas fa-plus"></i></div></div>
+
+                            <div class="page-box3 officer-bolo" style="margin-top: 6%; width: 100%; height:54%; margin-right: 0; margin-bottom: 0; top: 14%;">
+                                <div class="veh-item">David Cold</div>
+                            </div>
+                        </div>
+
+                        <div class="bolo-tags-box">
+                            <div class="page-box-label" style="top: 1.5%; width: 100%;">Tags <div class="add-icon new-tag-bolo"><i class="fas fa-plus"></i></div></div>
+
+                            <div class="page-box3 tags-bolo" style="margin-top: 6%; width: 100%; height:54%; margin-right: 0; margin-bottom: 0; top: 14%;">
+                                <div class="veh-item">Stolen Vehicle</div>
+                            </div>
+                        </div>
+
+                        <div class="status-bolo-box">
+                            <div class="page-box-label" style="top: 1.5%; width: 100%;">Status</div>
+
+                            <div class="page-box3 status-bolo" style="margin-top: 6%; width: 100%; height:54%; margin-right: 0; margin-bottom: 0; top: 14%; display: flex; justify-content: center; align-items: center;">
+                                <div class="status-box">On Going</div>
+                                <div class="status-box resolved-rep">Resolved</div>
+                            </div>
+                        </div>
+
+
+                        <div class="gallery-box4">
+                            <div class="page-box-label" style="top: 1.5%; width: 100%;">GALLERY<div class="add-icon new-bolo-photo"><i class="fas fa-plus"></i></div></div>
+
+                            <div class="page-box3 gallery-bolo" style="margin-top: 10%; width: 100%; height:100%; margin-right: 0; margin-bottom: 0; top: 0%;">
+                                <div class="image-little-gallery"><img src="debug_image/Katman 7.png"></div>
+                                <div class="image-little-gallery"><img src="debug_image/Katman 7.png"></div>
+                                <div class="image-little-gallery"><img src="debug_image/Katman 7.png"></div>
+                                <div class="image-little-gallery"><img src="debug_image/Katman 7.png"></div>
+                                <div class="image-little-gallery"><img src="debug_image/Katman 7.png"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="page-map">
+                    <div class="page-box" style="height: 90%;">
+                        <div class="page-box-label" style="top: 1.5%;">Dispatch Calls</div>
+
+                        <div class="search-tab">
+                                <input type="text" placeholder="Search Dispatch Call..." class="search-tab-input dispatch-search" id="dispatch-search" oninput="changeValue(this.value)">
+                                <span id="input-icon"><i class="fas fa-search"></i></span>
+                        </div>
+
+                        <div class="dispatch-list list-dashb" style="height: 85%;">
+                            <div class="dispatch-call-item">
+                                <div class="dispatch-respond-call">0</div>
+                                <div class="dispatch-name-call">Store Robbing</div>
+
+                                <div class="wanted-vehicle-case">#2569</div>
+                                <div class="dispatch-location-call"><i class="fas fa-map-marker-alt"></i> Hollywood Streed, Santa Monica 55-89</div>
+                                <div class="dispatch-time-call"><i class="fas fa-clock"></i> 27.12.2022 <b>15:09</b> / 30 mins ago</div>
+
+                                <div class="dispatch-model-call"><i class="fas fa-cog"></i> Blista</div>
+                                <div class="dispatch-color-call"><i class="fas fa-spray-can"></i> Red</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-box" style="height: 90%; width: 64.4%;">
+                        <div class="map-item jss11218 leaflet-main leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" id="map-item" style="position: relative;" tabindex="0">
+                            <div class="leaflet-control-container">
+                                <div class="leaflet-top leaflet-left">
+                                   <div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="#" title="Zoom in" role="button" aria-label="Zoom in">+</a><a class="leaflet-control-zoom-out leaflet-disabled" href="#" title="Zoom out" role="button" aria-label="Zoom out">−</a></div>
+                                </div>
+                                <div class="leaflet-top leaflet-right"></div>
+                                <div class="leaflet-bottom leaflet-left"></div>
+                                <div class="leaflet-bottom leaflet-right">
+                                   <div class="leaflet-control-attribution leaflet-control"><a href="" title="A JS library for interactive maps"></a></div>
+                                </div>
+                             </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="page-car">
+                    <div class="page-box" style="height: 90%;">
+                        <div class="page-box-label" style="top: 1.5%;">Vehicles</div>
+
+                        <div class="search-tab">
+                                <input type="text" placeholder="Search Vehicle..." class="search-tab-input vehicle-search" id="vehicle-search" oninput="changeValue(this.value)">
+                                <span id="input-icon"><i class="fas fa-search"></i></span>
+                        </div>
+
+                        <div class="vehicle-list list-dashb" style="height: 85%;">
+                            <div class="profile-person">
+                                <div class="profile-person-image"><img src="debug_image/Katman 7.png" class="image-little"></div>
+                                <div class="profile-person-name">5MDS003</div>
+
+                                <div class="profile-person-citizen">MOdel<br><b>T20</b></div>
+
+                                <div class="profile-person-job">Class<br><b>Super Car</b></div>
+
+                                <div class="profile-person-wanted">STOLEN</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-box" style="height: 90%; width: 64.4%;">
+                        <div class="page-box-label" style="top: 1.5%;">Manage Vehicle</div>
+
+                        <div class="image-big image-vehicle"><img src="debug_image/Katman 7.png"></div>
+
+                        <div class="profile-info-box">
+                            <div class="page-box-label" style="top: 1.5%; width: 100%;">Information</div>
+
+                            <div class="page-box2" style="overflow: hidden; width: 100%; height:84%; margin-right: 0; margin-bottom: 0; top: 14%;">
+                                <div class="info-item-label plate-id"><i class="fas fa-address-card"></i> Vehicle Plate<br><b>       5MDS003</b><div class="line-info"></div></div>
+                                <div class="info-item-label class"><i class="fas fa-compact-disc"></i> Class<br><b>       Super Car</b><div class="line-info"></div></div>
+                                <div class="info-item-label model"><i class="fas fa-car"></i> Vehicle Model<br><b>       T20</b><div class="line-info"></div></div>
+                                <div class="info-item-label owner"><i class="fas fa-user"></i> Owner<br><b>       Abraham Lincoln</b><div class="line-info"></div></div>
+                                <div class="info-item-label color"><i class="fas fa-spray-can"></i> Color<br><b>       Red</b><div class="line-info"></div></div>
+                                <div class="info-item-label profile-picture"><i class="fas fa-camera"></i> Profile Image<br><b>       https://discord.gg/0resmon</b><div class="line-info"></div></div>
+                            </div>
+                        </div>
+
+                        <div class="incident-text-box" style="top: 50%;">
+                            <div class="page-box-label" style="top: 1.5%; width: 100%;">Vehicle Description</div>
+
+                            <div class="page-box" style="width: 100%; height:84%; margin-right: 0; margin-bottom: 0; top: 14%;">
+                                <textarea class="text-area text-vehicle">&#10;&#10;Title: Store Robbing&#10;Location: Hollywood Street, Santa Monica 55-89&#10;Criminal Weapons: Combat Pistol&#10;Hostage: Braiden Miles &#10;Criminal Involved: Abraham Lincoln &#10;Crimes Commited: Store Robbing &#10;&#10;Penalty Amount: 1 Week&#10;Detention Period: 3 Day &#10;Witness: None&#10;Evidence: Added as Photo&#10;&#10;Officers Involved: David Cold</textarea>
+                            </div>
+                        </div>
+
+                        <div class="tags-box" style="top: 7%; height: 12vh;">
+                            <div class="page-box-label" style="top: 1.5%; width: 100%;">TAGS <div class="add-icon new-vehicle-tag"><i class="fas fa-plus"></i></div></div>
+
+                            <div class="page-box3 tag-vehicle" style="margin-top: 8%; width: 100%; height:44%; margin-right: 0; margin-bottom: 0; top: 0%;">
+                                <div class="veh-item">Vehicle Stolen</div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-box" style="top:5%; height: 51vh;">
+                            <div class="page-box-label" style="top: 1.5%; width: 100%;">GALLERY<div class="add-icon new-vehicle-photo"><i class="fas fa-plus"></i></div></div>
+
+                            <div class="page-box3 gallery-vehicle" style="margin-top: 8%; width: 100%; height:100%; margin-right: 0; margin-bottom: 0; top: 0%;">
+                                <div class="image-gallery"><img src="debug_image/Katman 7.png"></div>
+                                <div class="image-gallery"><img src="debug_image/Katman 7.png"></div>
+                                <div class="image-gallery"><img src="debug_image/Katman 7.png"></div>
+                                <div class="image-gallery"><img src="debug_image/Katman 7.png"></div>
+                                <div class="image-gallery"><img src="debug_image/Katman 7.png"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="page-department">
+                    <div class="page-box" style="width: 98%; height: 88%;">
+                        <div class="page-box-label">Department Units</div>
+
+                        <div class="department-units list-dashb" style="top: 10%; height: 90%;">
+                            <div class="unit-item" id="unit-zort">
+                                <div class="unit-name">zart</div>
+                        
+                                <div class="unit-radio">zort</div>
+                        
+                                <div class="unit-callsign">cis</div>
+                        
+                                <div class="unit-department">SEX</div>
+                                <div class="unit-status status-on">ONDUTY</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="gallery-link">
+            <span class="gallery-text">Add Image to MDT</span>
+            <div class="gallery-add-buttons">
+                <div class="gallery-add add-link">
+                    Add Image With Link
+                </div>
+                <div class="gallery-add add-capture">
+                    Add Image With Capture
+                </div>
+            </div>
+
+            <div class="search-tab add-image-inp" style="width: 100%; height: 100%; display: none;">
+                <input type="text" placeholder="ENTER IMAGE LINK..." class="search-tab-input image-link" id="image-link" style="width: 99%; height: 20%; text-align: center; position: absolute; cursor: pointer; top:50%; transform: translateY(-50%);">
+            </div>
+        </div>
+
+        <div class="unit-info">
+            <div class="unit-box-radio">
+                <span class="unit-info-header">Set Unit Radio</span>
+                <div class="search-tab add-image-inp" style="width: 100%; height: 100%;">
+                    <input type="text" placeholder="Enter Radio Frequency" class="search-tab-input radio-search" id="radio-search" style="width: 98%; height: 50%; text-align: center; position: absolute; cursor: pointer; top:50%; transform: translateY(-50%);">
+                </div>
+            </div>
+
+            <div class="unit-box-callsign">
+                <span class="unit-info-header">Set Callsign</span>
+                <div class="search-tab add-image-inp" style="width: 100%; height: 100%;">
+                    <input type="text" placeholder="Enter Callsign" class="search-tab-input callsign-search" id="callsign-search" style="width: 98%; height: 50%; text-align: center; position: absolute; cursor: pointer; top:50%; transform: translateY(-50%);">
+                </div>
+            </div>
+        </div>
+
+        <div class="grade-info" style="display: none;">
+            <span class="unit-info-header">Set Grade</span>
+            <select name="grades" class="grade-list"></select>
+        </div>
+
+        <div class="inc-char-table" style="display: none;">
+            <div class="inc-char-table-cont">
+                <div class="cur-charge-cont"><div class="cur-charges-txt">Current Charges</div><div class="cur-holder"></div></div>
+                <div class="main-offense"></div>
+            </div>
+        </div>
+
+        <div class="attached-units" style="display: none;">
+            <div class="attached-unit-box">
+                <div class="page-box-label" style="top: 1.5%; width: 98%;">Attached Units</div>
+
+                <div class="attached-unit-list"></div>
+            </div>
+        </div>
+
+        <div class="persons-department" style="display: none;">
+            <div class="persons-department-container">
+                <span class="text-department"><b>Search Person</b><br>You can search for person from this section and give them jobs. Person's past records counts can be viewed here, it is preferable that you recruit accordingly.</span>
+                <div class="search-tab" style="top: 15%;">
+                    <input type="text" placeholder="Search Person..." class="search-tab-input person-search" id="person-search" oninput="changeValue(this.value)">
+                    <span id="input-icon"><i class="fas fa-search"></i></span>
+                </div>
+                <div class="person-to-add-department-list"></div>
+            </div>
+        </div>
+
+        <div id="imagecheck"></div>
+        <div id="soundcheck"></div>
+    </body>
+    <!-- Main Code-->
+    <script type="text/javascript" src="config.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="dispatch.js"></script>
+    <script type="text/javascript" src="debug.js"></script>
+    <!-- Base Stuff-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</html>
+

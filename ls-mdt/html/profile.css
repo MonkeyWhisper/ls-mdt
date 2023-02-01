@@ -1,0 +1,659 @@
+.image-big {
+    position: absolute;
+
+    left: 1.2%;
+    top: 7%;
+
+    height: 30vh;
+    width: 12vw;
+
+    cursor: pointer;
+}
+
+.image-big > img {
+    width: 100%;    
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.image-gallery {
+    position: relative;
+
+    left: 1.2%;
+    top: 1vh;
+
+    height: 12vh;
+    width: 6vw;
+
+    margin-right: 1vh;
+    margin-bottom: 1vh;
+
+    float: left;
+}
+
+.image-gallery > img {
+    width: 100%;    
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.search-tab {
+    position: absolute;
+    height: 4.5vh;
+
+    width: 96%;
+
+    top: 7%;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    text-transform: uppercase;
+
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.search-tab-input {
+    width: 100%;
+    height: 100%;
+
+    color: var(--color-text);
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: var(--font-17px);
+
+    background-color: rgb(0 0 0 / 30%);
+    border: 1px solid rgba(255, 255, 255, .01);
+}
+
+.search-tab-input::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 100%;
+
+    background: var(--color-sec);
+    opacity: .03;
+}
+
+#input-icon {
+    position: absolute;
+    
+    color: var(--color-text);
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: var(--font-17px);
+    right: 2%;
+}
+
+.profile-person {
+    position: relative;
+    width: 100%;
+    height: 8vh;
+
+    margin-top: .3vh;
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    float: left;
+}
+
+.profile-person::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 100%;
+
+    background: var(--color-main);
+    opacity: .5;
+    z-index: -1;
+}
+
+.profile-person-name {
+    position: absolute;
+
+    top: 3%;
+    left: 17%;
+
+    color: #ffffff;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: var(--font-19px);
+}
+
+.profile-person-citizen {
+    position: absolute;
+
+    top: 48%;
+    left: 17%;
+
+    color: #ffffff;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: var(--font-15px);
+}
+
+.profile-person-citizen > b {
+    color: #989898;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;
+    font-size: var(--font-12px);
+
+    text-transform: uppercase;
+}
+
+.profile-person-job {
+    position: absolute;
+
+    top: 48%;
+    left: 36%;
+
+    color: #ffffff;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: var(--font-15px);
+}
+
+.profile-person-record > b {
+    color: #989898;
+    
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;
+    font-size: var(--font-12px);
+}
+
+.profile-person-record > b > span {
+    font-weight: 600;
+}
+
+.profile-person-record {
+    position: absolute;
+
+    top: 48%;
+    left: 60%;
+
+    color: #ffffff;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: var(--font-15px);
+}
+
+.profile-person-job > b {
+    color: #989898;
+    
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;
+    font-size: var(--font-12px);
+}
+
+.profile-person-crime {
+    position: absolute;
+
+    top: 43%;
+    left: 5%;
+
+    color: #ffffff;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 200;
+    font-size: var(--font-12px);
+}
+
+.profile-person-wanted {
+    position: absolute;
+
+    top: 50%;
+    right: 2%;
+    transform: translateY(-50%);
+
+    color: #429ffc;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: var(--font-19px);
+
+    animation: color-change 3s infinite;
+}
+
+@keyframes color-change {
+    0% { color: #ff3e3e; }
+    25% { color: #429ffc; }
+    50% { color: #ff3e3e; }
+    75% { color: #429ffc; }
+    100% { color: #ff3e3e; }
+  }
+
+.profile-person-image {
+    position: absolute;
+
+    top: 50%;
+    left: 2%;
+    transform: translateY(-50%);
+
+    width: 6vh;
+    height: 6vh;
+}
+.image-little {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.profile-info-box {
+    position: absolute;
+
+    left: 24.2%;
+    top: 7%;
+
+    height: 30vh;
+    width: 13.6vw;
+}
+
+.info-item-label {
+    position: relative;
+    width: 90%;
+    height: 4vh;
+
+    top: 1.2vh;
+    left: 5%;
+
+    color: #ffffff;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: var(--font-15px);
+}
+
+.info-item-label > b {
+    color: #eae7e7;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;
+    font-size: var(--font-12px);
+}
+
+.line-info {
+    position: absolute;
+
+    width: 90%;
+    height: 1px;
+    bottom: 0;
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    background: var(--color-text);
+    opacity: .03;
+}
+
+.profile-record-box {
+    position: absolute;
+
+    left: 1.2%;
+    top: 50%;
+
+    height: 35vh;
+    width: 26.5vw;
+}
+
+.license-box {
+    position: absolute;
+
+    left: 51.8%;
+    top: 7%;
+
+    width: 26.5vw;
+}
+
+.veh-box {
+    position: relative;
+
+    left: 51.8%;
+    top: 20%;
+
+    height: 7vh;
+
+    width: 26.5vw;
+}
+
+.property-box {
+    position: relative;
+
+    left: 51.8%;
+    top: 27%;
+
+    height: 10vh;
+
+    width: 26.5vw;
+}
+
+.tags-box {
+    position: relative;
+
+    left: 51.8%;
+    top: 33%;
+
+    height: 10vh;
+
+    width: 26.5vw;
+}
+
+.gallery-box {
+    position: relative;
+
+    left: 51.8%;
+    top: 34%;
+
+    height: 15vh;
+
+    width: 26.5vw;
+}
+
+.record-item {
+    position: relative;
+
+    width: 100%;
+    height: 3.5vh;
+
+    top: 0;
+    left: 0;
+
+    float: left;
+}
+
+.record-item::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 100%;
+
+    background: var(--color-main);
+    opacity: .5;
+}
+
+.record-folder {
+    position: absolute;
+
+    top: 50%;
+    transform: translateY(-50%);
+    left: 3%;
+
+    color: #ffffff;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: var(--font-15px);
+}
+
+.wanted-person-case {
+    position: absolute;
+
+    top: 50%;
+    transform: translateY(-50%);
+    right: 2%;
+
+    color: #ffffff;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 100;
+    font-size: var(--font-15px);
+
+    text-transform: uppercase;
+}
+
+.license-item {
+    position: relative;
+
+    margin-top: .5vh;
+    margin-left: .7vh;
+    padding: .1vh;
+    padding-left: 1vh; 
+    padding-right: 1vh; 
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 2vh;
+
+    left: 0;
+
+    float: left;
+
+    color: #ffffff;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: var(--font-12px);
+
+    border-radius: 2.5px;
+
+    cursor: pointer;
+}
+
+.veh-item {
+    position: relative;
+
+    margin-top: .5vh;
+    margin-left: .7vh;
+    padding: .1vh;
+    padding-left: 1vh; 
+    padding-right: 1vh; 
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 2vh;
+
+    left: 0;
+
+    float: left;
+
+    color: #ffffff;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: var(--font-12px);
+    background: #191919;
+
+    border-radius: 2.5px;
+}
+
+
+
+
+.main-offense {
+    overflow: auto;
+    margin: auto;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    width: 100%;
+    height: 87%;
+
+    overflow: scroll;
+}
+
+.offfense-title {
+    width: fit-content;
+    height: fit-content;
+    background-color: rgb(255, 255, 255, 0.05);
+    margin-left: 3.55vh;
+    margin-top: 1.5vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+
+    padding: .7vh;
+    padding-left: 1.5vh;
+    padding-right: 1.5vh;
+
+    font-weight: 500px;
+    font-size: 1.4vh;
+}
+
+.grid-off {
+    width: 95%;
+
+    background-color: rgb(255, 255, 255, 0.05);
+    
+    margin: auto;
+    margin-top: .1vh;
+    margin-bottom: 0vh;
+
+    display: grid;
+
+    grid-template-columns: auto auto auto auto auto auto;
+    grid-template-rows: auto auto auto auto auto auto;
+
+    row-gap: 0vh;
+
+    overflow: auto;
+}
+
+.offense-item {
+
+    height: 5.0vh;
+    margin: .5vh;
+
+    transition: all 0.15s ease-in-out;
+
+    overflow: hidden;
+}
+
+.offense-item > div {
+    color: white;
+    font-size: var(--font-12px);
+    font-weight: 400;
+}
+
+.offense-item:hover {
+    transform: scale(1.02);
+    transition: all 0.15s ease-in-out;
+}
+
+.off-off {
+    margin: auto;
+    margin-left: .5vh;
+    margin-top: .5vh;
+
+    font-weight: 500;
+    font-size: var(--font-14px);
+}
+
+.off-month {
+    margin: auto;
+    margin-left: .5vh;
+    margin-top: 1.2vh;
+}
+
+.inc-char-table {
+    position: absolute;
+    
+    width: 100%;
+    height: 100%;
+    margin: auto;
+
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.inc-char-table-cont {
+    background-color: rgb(12, 12, 12);
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+
+    width: 80vw;
+    height: 60vh;
+
+    margin: auto;
+    z-index: 9999;
+
+    user-select: none;
+
+    border-radius: 5px;
+}
+
+.cur-charge-cont {
+    width: 95%;
+
+    margin: auto;
+    margin-top: 1.5vh;
+    margin-bottom: 0vh;
+    
+    display: flex;
+}
+
+.cur-charges-txt {
+    background-color: rgb(255, 255, 255, 0.03);
+
+    width: 35vh;
+    height: fit-content;
+
+    padding-top: .7vh;
+    padding-bottom: .7vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: var(--font-19px);
+    font-weight: 500;
+
+    color: white;
+}
+
+.cur-holder {
+    display: flex;
+    margin: auto;
+    width: 110vh;
+    margin-left: 1vh;
+    margin-right: 1vh;
+    overflow: hidden;
+}
+
+.charges-tag {
+    display: inline-block;
+
+    padding: 1.0vh;
+
+    text-decoration: none;
+
+    margin-right: 10px;
+
+    padding-left: 1vw;
+    padding-right: 1vw;
+    border-radius: 2.5px;
+
+    font-size: var(--font-17px);
+    font-weight: 400;
+
+    width: fit-content;
+    background-color: rgb(255,255,255,0.03);
+    color: white;
+
+    white-space: nowrap;
+}
